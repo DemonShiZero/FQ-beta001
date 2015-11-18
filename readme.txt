@@ -26,5 +26,10 @@ ssh-keygen -t rsa -C "youemail@example.com"
 git remote add <origin> git@server-name:username/repo-name.git 关联一个远程库
 git push u <origin> master
 
-git checkout -b <branch> 创建分支
+git checkout -b <branch> 创建分支+切换
 git branch 查看分支
+git branch <branch> 创建分支
+git checkout <branch> 切换分支
+git merge <branch> 将分支的修改合并到master上
+git branch -d <branch> 删除不需要的分支
+//因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。
