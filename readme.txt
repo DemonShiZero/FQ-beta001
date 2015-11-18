@@ -56,3 +56,24 @@ git stash apply stash@{0}
 
 开发一个新feature，最好新建一个分支；
 如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。
+
+git remote 查看远程库信息 git remote -v 显示详细的信息
+
+git push origin master 推送分支
+
+多人协作的工作模式通常是这样：
+0.首先，可以试图用git push origin branch-name推送自己的修改；
+1.如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+2.如果合并有冲突，则解决冲突，并在本地提交；
+3.没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
+4.如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。
+这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
+
+I believe this occurs when you are trying to checkout a remote branch that your local git repo is not aware of yet. Try:
+git remote show origin 
+If the remote branch you want to checkout is under “New remote branches” and not “Tracked remote branches” then you need to fetch them first:
+git remote update 
+git fetch 
+Now it should work:
+git checkout -b local-name origin/remote-name
