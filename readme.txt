@@ -77,3 +77,20 @@ git remote update
 git fetch 
 Now it should work:
 git checkout -b local-name origin/remote-name
+
+
+git 标签(版本管理的快照)
+创建标签的步骤
+1.切换到需要打标签的分支上
+2.git tag <name>
+可以通过git tag指令查看所有标签
+默认的标签是打在最新的commit上的，如果想打再之前的commit上就需要找到历史的commit id
+通过git log --pretty=oneline --abbrev-commit指令查看
+git tag <name> <commit id>
+git show <tagName>
+git tag -a <name> -m "Message" 带说明的标签
+git tag -s <name> -m "Message" 带签名的标签
+git tag -d <name>删除标签
+git push origin <tagName>
+git push origin --tags 推送本地标签到远程
+git push origin :refs/tages/<tagName> 删除远程的标签
